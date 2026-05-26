@@ -22,3 +22,4 @@
 
 #include "zadanie1.typ"
 
+#include "zadanie2.typ"

@@ -2,7 +2,7 @@
 
 = System `M/M/x,y`
 
-Rozważmy system kolejkowy M/M/x,y (x serwerów, (y-x) miejsc w kolejce, razem y miejsca w systemie), gdzie każdy serwer obsługuje klienta przez czas wykładniczy z intensywnością $mu$, a intensywność napływu zgłoszeń zależy od stanu systemu w sposób następujący:
+Rozważmy system kolejkowy `M/M/x,y` (x serwerów, (y-x) miejsc w kolejce, razem y miejsca w systemie), gdzie każdy serwer obsługuje klienta przez czas wykładniczy z intensywnością $mu$, a intensywność napływu zgłoszeń zależy od stanu systemu w sposób następujący:
 
 $lambda_n$ dla $n = 0, 1, ..., y =$ ...
 
