@@ -19,7 +19,14 @@
 #outline(
   title: "Kolejkowa heurystyka edukacyjna"
 )
+#pagebreak()
 
 #include "zadanie1.typ"
+#pagebreak()
 
 #include "zadanie2.typ"
+#pagebreak()
+
+#include "zadanie3.typ"
+#pagebreak()
+
