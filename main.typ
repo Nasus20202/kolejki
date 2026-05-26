@@ -30,3 +30,6 @@
 #include "zadanie3.typ"
 #pagebreak()
 
+#include "zadanie4.typ"
+#pagebreak()
+
