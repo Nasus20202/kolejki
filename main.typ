@@ -33,3 +33,6 @@
 #include "zadanie4.typ"
 #pagebreak()
 
+#include "wzory.typ"
+#pagebreak()
+
