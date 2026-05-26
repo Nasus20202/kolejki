@@ -1,0 +1,262 @@
+// sw(część, strona) i sk(strona) — klikalne linki z numerem strony w skompilowanym PDF
+#let sw(part, pg) = {
+  let lbl = label("w" + str(part) + "-" + str(pg))
+  link(lbl, context [s.~#counter(page).at(lbl).first()])
+}
+#let sk(pg) = {
+  let lbl = label("ko-" + str(pg))
+  link(lbl, context [s.~#counter(page).at(lbl).first()])
+}
+
+= Słownik pojęć <slownik>
+
+#set table(stroke: 0.4pt, inset: 5pt)
+#show table.cell.where(y: 0): strong
+
+== Modele kolejkowe
+
+#table(
+  columns: (auto, 1fr, auto),
+  [Pojęcie], [Opis], [Slajdy],
+  [`G/G/1`],
+    [Ogólny czas między-zgłoszeniowy i obsługi, 1 serwer],
+    [#sw(1,6)],
+  [`NSO` / `M/M/1,1`],
+    [Najprostszy system obsługi: 1 serwer, 1 miejsce łącznie],
+    [#sw(1,7), #sw(1,8), #sw(1,11), #sw(1,12), #sw(1,18)–#sw(1,20), #sw(1,29)],
+  [`M/M/1`],
+    [1 serwer, nieskończona kolejka; strumień Poissona, czas obsługi wykładniczy],
+    [#sw(2,2)–#sw(2,6), #sw(2,11)],
+  [`M/M/1` ze zniechęcaniem],
+    [$lambda_n = alpha \/ (n+1)$; intensywność napływu zależy od stanu],
+    [#sw(2,12), #sw(2,13), #sw(3,7)–#sw(3,9), #sw(3,16)],
+  [`M/M/`$infinity$],
+    [Nieskończona liczba serwerów],
+    [#sw(2,14), #sw(2,15)],
+  [`M/M/m`],
+    [$m$ serwerów, nieskończona kolejka],
+    [#sw(2,16)],
+  [`M/M/1,m`],
+    [1 serwer, $m$ miejsc łącznie w systemie],
+    [#sw(2,17)],
+  [`M/M/m,m` (Erlang)],
+    [$m$ serwerów, bez kolejki — system czysto stratny],
+    [#sw(2,18), #sw(2,19)],
+  [`M/M/m,K`],
+    [$m$ serwerów, $K$ miejsc łącznie w systemie],
+    [#sw(2,20)],
+  [`M/G/1`],
+    [Strumień Poissona, dowolny rozkład czasu obsługi, 1 serwer],
+    [#sw(4,2)–#sw(4,14)],
+  [`GI/M/1`],
+    [Dowolny czas między-zgłoszeniowy, czas obsługi wykładniczy, 1 serwer],
+    [#sw(5,2)–#sw(5,7)],
+)
+
+== Kluczowe twierdzenia i własności
+
+#table(
+  columns: (auto, 1fr, auto),
+  [Pojęcie], [Opis], [Slajdy],
+  [PASTA],
+    [Poissonowskie zgłoszenia widzą stany średnie czasowe: $pi_n = P_n$],
+    [#sw(3,2), #sw(3,6)–#sw(3,9)],
+  [Twierdzenie Burke'a],
+    [Strumień wyjściowy z M/M/1 jest procesem Poissona o intensywności $lambda$],
+    [#sw(3,10)–#sw(3,13)],
+  [Równość Little'go],
+    [$L = lambda dot W$ — ogólne prawo dla stabilnych systemów kolejkowych],
+    [#sw(3,14)–#sw(3,16)],
+  [Twierdzenie Bayesa],
+    [Używane do wyprowadzenia własności PASTA],
+    [#sw(3,4), #sw(3,5)],
+  [Wzór Pollaczka-Chinczyna (P-K)],
+    [$W_q = rho/(1-rho) dot m_2/(2h)$ — średni czas oczekiwania w M/G/1],
+    [#sw(4,6)],
+  [Resztowy czas obsługi],
+    [$r = m_2 \/ (2h)$; teoria odnowy (renewal theory)],
+    [#sw(4,3)–#sw(4,5)],
+  [Proces włożony (embedded)],
+    [Łańcuch dyskretny: w chwilach wyjść (M/G/1) lub wejść (GI/M/1)],
+    [#sw(4,7)–#sw(4,9), #sw(5,3)–#sw(5,5)],
+)
+
+== Procesy stochastyczne
+
+#table(
+  columns: (auto, 1fr, auto),
+  [Pojęcie], [Opis], [Slajdy],
+  [Proces Poissona],
+    [$N(t) tilde "Poisson"(lambda t)$; superpozycja i dekompozycja strumieni],
+    [#sw(1,21)–#sw(1,28)],
+  [Rozkład wykładniczy],
+    [Własność bezpamięciowości; $min$ niezależnych wykładniczych jest wykładniczy],
+    [#sw(1,13)–#sw(1,17)],
+  [Procesy urodzin i śmierci (BDP)],
+    [Ogólny wzór na prawdopodobieństwa stanów w równowadze],
+    [#sw(2,7)–#sw(2,10)],
+  [Łańcuchy Markowa — czas dyskretny (MCDT)],
+    [Macierz przejść $bold(P)$; rozkład stacjonarny; równania bilansowe],
+    [#sw(5,8), #sw(5,9)],
+  [Łańcuchy Markowa — czas ciągły (MCCT)],
+    [Generator $bold(Q)$; układ równań różniczkowych na $P_n(t)$],
+    [#sw(5,10)–#sw(5,12)],
+  [Ergodyczność],
+    [Średnia czasowa = średnia po trajektoriach (ensemble average)],
+    [#sw(1,7), #sw(1,8)],
+  [Stan ustalony / stacjonarny],
+    [$P_n = lim_(t -> infinity) P_n(t)$; zanika wpływ warunków początkowych],
+    [#sw(1,11), #sw(1,12), #sw(2,4)–#sw(2,9)],
+)
+
+== Parametry i miary systemu
+
+#table(
+  columns: (auto, 1fr, auto),
+  [Symbol], [Opis], [Slajdy],
+  [$lambda$],
+    [Intensywność napływu zgłoszeń $["s"^(-1)]$],
+    [#sw(1,5), #sw(1,9)],
+  [$mu$],
+    [Intensywność obsługi; $1\/mu$ = średni czas obsługi],
+    [#sw(1,5)],
+  [$rho = lambda\/mu$],
+    [Współczynnik obciążenia; warunek stabilności systemu: $rho < 1$],
+    [#sw(2,6)],
+  [$A = lambda\/mu$],
+    [Natężenie ruchu w erlangach; wejście do wzoru Erlanga-B],
+    [#sw(2,18), #sw(2,19)],
+  [$P_n$],
+    [Prawdopodobieństwo stanu $n$ w równowadze statystycznej],
+    [#sw(2,4)–#sw(2,10)],
+  [$P_0 = 1 - rho$],
+    [Prawdopodobieństwo pustego systemu (M/M/1, M/G/1)],
+    [#sw(2,5), #sw(4,10)],
+  [$L = rho\/(1-rho)$],
+    [Średni stan systemu M/M/1],
+    [#sw(2,6)],
+  [$L_q$],
+    [Średni stan kolejki; $L_q = L - rho$],
+    [#sw(3,15)],
+  [$W = 1\/(mu - lambda)$],
+    [Średni czas przebywania klienta w systemie M/M/1],
+    [#sw(2,6)],
+  [$W_q$],
+    [Średni czas oczekiwania klienta w kolejce; $W_q = W - 1\/mu$],
+    [#sw(2,6), #sw(4,6)],
+  [$h = 1\/mu$],
+    [Średni czas obsługi (używany w M/G/1)],
+    [#sw(4,2)],
+  [$m_2 = E[Y^2]$],
+    [Drugi moment zwykły czasu obsługi — wejście do wzoru P-K],
+    [#sw(4,4)–#sw(4,6)],
+  [$B = E_m (A)$],
+    [Prawdopodobieństwo blokady (odrzucenia) — wzór Erlanga-B],
+    [#sw(2,19)],
+  [Okres zajętości (busy period)],
+    [$T_"BP" = 1\/(mu - lambda)$ dla M/M/1],
+    [#sk(3), #sk(4)],
+)
+
+== Kolejki z priorytetami
+
+#table(
+  columns: (auto, 1fr, auto),
+  [Pojęcie], [Opis], [Slajdy],
+  [Priorytety — ogólnie],
+    [$P$ klas; FIFO w każdej klasie; jeden serwer M/G/1],
+    [#sw(3,17)],
+  [Non-preemptive (bez wywłaszczania)],
+    [Po zwolnieniu serwera obsługiwany klient z najwyższym priorytetem],
+    [#sw(3,18), #sw(3,19)],
+  [Preemptive (z wywłaszczaniem)],
+    [Wyższy priorytet przerywa obsługę niższego; wymaga M/M/1],
+    [#sw(3,20)–#sw(3,24)],
+  [Wzór $W(p)$ — non-preemptive],
+    [$W(p) = display(sum_q lambda(q) m_2(q) \/ 2) \/ display((1 - sum_(q lt.eq p-1) rho(q))(1 - sum_(q lt.eq p) rho(q)))$],
+    [#sw(3,19)],
+  [Wzór $T(p)$ — preemptive],
+    [$T(p) = W(p) + S(p)$;#h(0.5em) $S(p) = h(p) \/ (1 - sum_(q lt.eq p-1) rho(q))$],
+    [#sw(3,24)],
+)
+
+= Lista zadań <zadania>
+
+== Zadania heurystyczne (kolokwium 2025)
+
+#table(
+  columns: (auto, 1fr),
+  [Zadanie], [Temat],
+  [Zadanie 1],
+    [System `M/M/x,y` — prawdopodobieństwa stanów $P_n$, $L$, $L_q$, $W$, $W_q$],
+  [Zadanie 2],
+    [System `M/M/x,y` — średni czas przebywania w stanie $E[T(n)]$],
+  [Zadanie 3],
+    [System `M/G/1,`$infinity$ — wzór Pollaczka-Chinczyna],
+  [Zadanie 4],
+    [System `M/M/1,`$infinity$ z priorytetami (non-preemptive i preemptive)],
+)
+
+== Zadania z kolokwiów (stare egzaminy)
+
+#table(
+  columns: (auto, auto, 1fr, auto),
+  [Kolokwium], [Zadanie], [Temat], [Strony],
+  [Kol. 1], [Zad. 1],
+    [Równość Little'go dla `M/M/m,m`; wzór Erlanga-B: $L = A(1-B)$],
+    [#sk(1)],
+  [Kol. 1], [Zad. 2],
+    [`M/G/1` — wzór P-K dla rozkładu dwupunktowego, stałego i wykładniczego],
+    [#sk(2)],
+  [Kol. 1], [Zad. 3],
+    [Okres zajętości w `M/M/1`: $T_"BP" = 1\/(mu - lambda)$],
+    [#sk(3)],
+  [Kol. 1], [Zad. 4],
+    [BDP ze stanem zależnym: $lambda_n = (n+2)lambda$, $mu_n = n mu$ — $P_n$ i warunek stabilności],
+    [#sk(4)–#sk(5)],
+  [Kol. 2], [Zad. 1],
+    [`M/M/1` z priorytetem preemptive — $T(1)$, $T(2)$],
+    [#sk(6)],
+  [Kol. 2], [Zad. 2],
+    [Średni czas przebywania w stanie 3 dla `M/M/2,4` ze stanem zależnym],
+    [#sk(7)],
+  [Kol. 2], [Zad. 3],
+    [`M/G/1` — wzór P-K dla hiper-wykładniczego rozkładu czasu obsługi],
+    [#sk(8)–#sk(9)],
+  [Kol. 2], [Zad. 4],
+    [`M/M/3,4` — $P_n$, $L$, $L_q$, $W$, $W_q$, $overline(lambda)$ ze stanem zależnym],
+    [#sk(10)–#sk(11)],
+  [Kol. 3], [Zad. 1],
+    [`M/M/1` z priorytetem preemptive — $T(1)$, $T(2)$],
+    [#sk(12)],
+  [Kol. 3], [Zad. 2],
+    [`M/M/3,6` — $P_n$, $L$, $L_q$, $W$, $W_q$, $overline(lambda)$],
+    [#sk(13)–#sk(15)],
+  [Kol. 3], [Zad. 3],
+    [`M/G/1` — wzór P-K dla hiper-wykładniczego rozkładu czasu obsługi],
+    [#sk(14)–#sk(15)],
+  [Kol. 3], [Zad. 4],
+    [`M/M/3,5` — $P_n$, $L$, $L_q$, $W$, $W_q$, $overline(lambda)$ ze stanem zależnym],
+    [#sk(16)–#sk(18)],
+  [Spr. 1], [Zad. 1],
+    [`M/M/1` z priorytetami non-preemptive i preemptive — $T(1)$, $T(2)$],
+    [#sk(19)–#sk(20)],
+  [Spr. 1], [Zad. 2],
+    [`M/G/1` — wzór P-K; parametry $h$, $rho$, $m_2$ dla różnych rozkładów],
+    [#sk(21)–#sk(22)],
+  [Spr. 1], [Zad. 3a],
+    [`M/M/3,3` — $P_n$, $L$, $L_q$, $W$, $W_q$],
+    [#sk(23)–#sk(24)],
+  [Spr. 1], [Zad. 3b],
+    [`M/M/2,4` — $P_n$, $L$, $L_q$, $W$, $W_q$],
+    [#sk(25)–#sk(26)],
+  [Spr. 1], [Zad. 3c],
+    [`M/M/4,5` — $P_n$, $L$, $L_q$, $W$, $W_q$],
+    [#sk(27)],
+  [Spr. 1], [Zad. 4 (a)],
+    [`M/G/1` — wzór P-K dla hiper-wykładniczego rozkładu czasu obsługi],
+    [#sk(28)–#sk(29)],
+  [Spr. 1], [Zad. 4 (b)],
+    [`M/M/1` z priorytetami non-preemptive i preemptive — $T(1)$, $T(2)$],
+    [#sk(30)–#sk(31)],
+)

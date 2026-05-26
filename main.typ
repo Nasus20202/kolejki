@@ -16,13 +16,26 @@
   ]
 )
 #set figure(numbering: none)
+#set table(stroke: 0.4pt, inset: 5pt)
+#show table.cell.where(y: 0): strong
+
+// Skrócone nazwy plików do etykiet
+#let pdf-key(path) = {
+  if path.contains("część-1") { "w1" }
+  else if path.contains("część-2") { "w2" }
+  else if path.contains("część-3") { "w3" }
+  else if path.contains("część-4") { "w4" }
+  else if path.contains("część-5") { "w5" }
+  else if path.contains("BO_tests") { "ko" }
+  else { "xx" }
+}
 
 #let slide-thumb(path, slide-page) = box(width: 100%)[
   #align(center)[
     #figure(
       image(path, page: slide-page, fit: "contain"),
       caption: [Strona #slide-page]
-    )
+    ) #label(pdf-key(path) + "-" + str(slide-page))
   ]
 ]
 
@@ -53,9 +66,21 @@
   ]
 ]
 
+// Helper: klikalne linki z numerem strony w skompilowanym PDF
+#let sw(part, pg) = {
+  let lbl = label("w" + str(part) + "-" + str(pg))
+  link(lbl, context [s.~#counter(page).at(lbl).first()])
+}
+#let sk(pg) = {
+  let lbl = label("ko-" + str(pg))
+  link(lbl, context [s.~#counter(page).at(lbl).first()])
+}
+
 #outline(
   title: "Kolejkowa heurystyka edukacyjna"
 )
+
+#include "slownik.typ"
 #pagebreak()
 
 #include "zadanie1.typ"
@@ -71,11 +96,14 @@
 #pagebreak()
 
 #include "wzory.typ"
-#pagebreak()
 
 #set page(
   flipped: true
 )
+
+= Stare kolokwia
+
+#old-exam-handout("external/BO_tests_merged.pdf", range(1, 32))
 
 = Wykłady
 
@@ -93,7 +121,3 @@
 
 == Część 5
 #pdf-handout("external/wykłady-TK-część-5_2026.pdf", range(2, 14))
-
-= Stare kolokwia
-
-#old-exam-handout("external/BO_tests_merged.pdf", range(1, 32))
