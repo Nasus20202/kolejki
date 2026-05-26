@@ -16,7 +16,9 @@
   ]
 )
 
-= Kolejkowa heurystyka edukacyjna
+#outline(
+  title: "Kolejkowa heurystyka edukacyjna"
+)
 
 #include "zadanie1.typ"
 
