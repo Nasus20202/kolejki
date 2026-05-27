@@ -52,7 +52,10 @@ Zgodnie ze wskazówką:
 $ h = E[Y] = p_1 h_1 + p_2 h_2 + p_3 h_3 = p_1 E[Y_1] + p_2 E[Y_2] + p_3 E[Y_3] = 1/2 * 1/2 + 1/4 * 1 + 1/4 * 2 = 1 $
 $ m_2 = E[Y^2] = p_1 m_2^1 + p_2 m_2^2 + p_3 m_2^3 = p_1 E[Y_1^2] + p_2 E[Y_2^2] + p_3 E[Y_3^2] = 1/2 * 1/2 + 1/4 * 1 + 1/4 * 4 = 3/2 $
 
-=== Obliczenie średniego czasu oczekiwania zgłoszenia dla systemu `M/M/1,`$infinity$
-
 $ rho = lambda * h = 1/2 $
 $ W = rho/(1 - rho) (m_2)/(2h) = 3/2 / (2 * 1) = 3/4 $
+
+=== Obliczenie średniego czasu oczekiwania zgłoszenia dla systemu `M/M/1,`$infinity$
+
+$ lambda = 1/2, mu = 1/h = 1 $
+$ W_q = rho / (mu - lambda) = 1 $

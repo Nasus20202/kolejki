@@ -68,6 +68,8 @@ _Wartości będą takie same jak wyliczone 2 linie wyżej, tylko bez $P_0$ na ko
 
 === Średni stan kolejki $L_q$ oraz średni czas oczekiwania w kolejce $W_q$
 
+_Jeśli nie trzeba liczyć $L_q$ i $W_q$, to można od razu przejść do obliczenia $W$ i $L$ z użyciem równości Little'ego._
+
 $ L_q = sum_(n=x+1)^y (n-x+1) P_n $
 $ L_q = 1 P_(x+1) + 2 P_(x+2) + ... + (y-x+1) P_y $ 
 
@@ -82,6 +84,10 @@ $ W_q = L_q / overline(lambda) $
 === Średni stan systemu $L$ oraz średni czas przebywania klienta w systemie $W$
 
 $ W = W_q + 1/mu, L = overline(lambda) W $
+
+Alternatywnie, można też użyć równości Little'ego:
+
+$ L = sum_(n=0)^(y) n P_n, W = L / overline(lambda) $
 
 === Obliczyć powyższe wartości dla parametrów $lambda=a$, $mu=b$
 
