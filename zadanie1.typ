@@ -70,7 +70,7 @@ _Wartości będą takie same jak wyliczone 2 linie wyżej, tylko bez $P_0$ na ko
 
 _Jeśli nie trzeba liczyć $L_q$ i $W_q$, to można od razu przejść do obliczenia $W$ i $L$ z użyciem równości Little'ego._
 
-$ L_q = sum_(n=x+1)^y (n-x+1) P_n $
+$ L_q = sum_(n=x+1)^y (n-x) P_n $
 $ L_q = 1 P_(x+1) + 2 P_(x+2) + ... + (y-x+1) P_y $ 
 
 Teraz liczymy $overline(lambda)$:
